@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PerfectHelp.Data.Constants
+﻿namespace PerfectHelp.Data.Constants
 {
     public class WebConstants
     {
-        public const string AdministratorRoleName = "Administrator";
+        public const string AdministratorRoleName = "Admin";
         public const string TherapystRoleName = "Therapyst";
+        public const string UserRoleName = "User";
     }
 }

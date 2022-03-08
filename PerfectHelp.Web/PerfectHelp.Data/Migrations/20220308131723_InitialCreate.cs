@@ -178,6 +178,41 @@ namespace PerfectHelp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "2c5e174e-3b0e-446f-86af-483d56fd7210", "2277708b-446d-4d8f-8295-05adba119c7a", "Admin", "ADMIN" },
+                    { "2c5e174e-3b0e-446f-86af-483d56fd7214", "dbe2d7d0-7a1e-4c0d-9035-966d1dc70532", "Therapyst", "THERAPYST" },
+                    { "2c5e174e-3b0e-446f-86af-563d56fd7217", "ef9c86a8-f06e-4e7f-b69c-cc72a5287744", "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NewsletterId", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "2c5e174e-3b0e-446f-86af-483d56fc7211", 0, "5929058c-f2ae-4b69-b6b8-39f0bf357ff1", "user@gmail.com", false, true, null, null, "USER@GMAIL.COM", "USER@GMAIL.COM", "AQAAAAEAACcQAAAAEFRB864vA99nr5lkd05x5wkp3Ti3Eqm48yHK7saINI6dYhnunvtV1T0Xs4qZw4sMJQ==", null, false, "d43da728-58fd-4578-91dc-fb48b239fced", false, "user@gmail.com" },
+                    { "2c5e174e-3b0e-446f-86af-483d56fd7211", 0, "d96471f7-0097-4f7a-b0ab-2c18c9953336", "yokogrup@gmail.com", false, true, null, null, "YOKOGRUP@GMAIL.COM", "YOKOGRUP@GMAIL.COM", "AQAAAAEAACcQAAAAEBBG78mq9WTOPFiqzHPQmX5e1oJtozyguEKnT/af0QW2+C4OLRgOsbGqgBZlik1Ncw==", null, false, "2975700b-4bed-4beb-8d7d-cbd2e39f98e3", false, "yokogrup@gmail.com" },
+                    { "2c5e174e-3y0e-446f-86af-483d56fc7211", 0, "7525ea4f-e4dd-4b27-a273-f5acd7d5583c", "therapyst@gmail.com", false, true, null, null, "THERAPYST@GMAIL.COM", "THERAPYST@GMAIL.COM", "AQAAAAEAACcQAAAAEL1+7nCHTZfC+sgFmMVLTTsooazBj4aQBhTil7k2ImB5/GCOM9bP5wwzaY4maqJNMQ==", null, false, "840cf473-c820-4a8f-bf6d-45c45af1b184", false, "therapyst@gmail.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-563d56fd7217", "2c5e174e-3b0e-446f-86af-483d56fc7211" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "2c5e174e-3b0e-446f-86af-483d56fd7211" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7214", "2c5e174e-3y0e-446f-86af-483d56fc7211" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

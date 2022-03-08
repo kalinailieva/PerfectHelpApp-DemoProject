@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using PerfectHelp.Data;
 using PerfectHelp.Data.Infrastructure;
@@ -11,20 +10,11 @@ IConfiguration configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .Build();
 
-
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//dataseeder
 
 builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-
-
-
-
-
-
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -33,6 +23,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => {
     options.Password.RequireNonAlphanumeric = false;    
     options.Password.RequireDigit = false;
     })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
 
@@ -43,8 +34,7 @@ builder.Services.Configure<AuthMessageSenderOptions>(configuration);
 
 var app = builder.Build();
 
-
-
+//data seed
 
 SeedData(app);
 

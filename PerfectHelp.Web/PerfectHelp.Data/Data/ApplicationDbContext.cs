@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using PerfectHelp.Data.Entity;
 using System.Security.Claims;
 
+
 namespace PerfectHelp.Data
 {
     public class ApplicationDbContext : IdentityDbContext
@@ -34,41 +35,81 @@ namespace PerfectHelp.Data
 
             //seedData
 
-            //var hasher = new PasswordHasher<IdentityUser>();
-            //builder.Entity<IdentityUser>().HasData(
-            //    new IdentityUser
-            //    {
-            //        Id = Guid.NewGuid().ToString(),
-            //        UserName = "admin",
-            //        NormalizedUserName = "ADMIN",
-            //        PasswordHash = hasher.HashPassword(null, "Mypass123!"),
-            //    }
-            //    );
-            //builder.Entity<IdentityRole>().HasData(
-            //    new IdentityRole
-            //    {
-            //        Id = Guid.NewGuid().ToString(), // for admin
-            //        Name = "Admin",
-            //        NormalizedName = "ADMIN"
-            //    },
-            //    new IdentityRole
-            //    {
-            //        Id = Guid.NewGuid().ToString(), // for therapyst 
-            //        Name = "Therapyst",
-            //        NormalizedName = "THERAPYST"
-            //    },
-            //    new IdentityRole
-            //    {
-            //        Id = Guid.NewGuid().ToString(), // for user
-            //        Name = "User",
-            //        NormalizedName = "USER"
-            //    }
-            //);
+            var hasher = new PasswordHasher<IdentityUser>();
+            builder.Entity<IdentityUser>().HasData(
+                new IdentityUser
+                {
+                    Id = "2c5e174e-3b0e-446f-86af-483d56fd7211",
+                    UserName = "yokogrup@gmail.com",
+                    Email = "yokogrup@gmail.com",
+                    NormalizedEmail = "YOKOGRUP@GMAIL.COM",
+                    NormalizedUserName = "YOKOGRUP@GMAIL.COM",
+                    PasswordHash = hasher.HashPassword(null, "Mypass123!"),
+                    LockoutEnabled = true,
+                },
+                new IdentityUser
+                {
+                    Id = "2c5e174e-3y0e-446f-86af-483d56fc7211",
+                    UserName = "therapyst@gmail.com",
+                    Email = "therapyst@gmail.com",
+                    NormalizedEmail = "THERAPYST@GMAIL.COM",
+                    NormalizedUserName = "THERAPYST@GMAIL.COM",
+                    PasswordHash = hasher.HashPassword(null, "Mypass123!"),
+                    LockoutEnabled = true,
+                },
+                new IdentityUser
+                {
+                    Id = "2c5e174e-3b0e-446f-86af-483d56fc7211",
+                    UserName = "user@gmail.com",
+                    Email = "user@gmail.com",
+                    NormalizedEmail = "USER@GMAIL.COM",
+                    NormalizedUserName = "USER@GMAIL.COM",
+                    PasswordHash = hasher.HashPassword(null, "Mypass123!"),
+                    LockoutEnabled = true,
+                }
+            );
+            builder.Entity<IdentityRole>()
+                .HasData(new IdentityRole { 
+                    Id = "2c5e174e-3b0e-446f-86af-483d56fd7210", 
+                    Name = "Admin", NormalizedName = "ADMIN".ToUpper() 
+                },
+                new IdentityRole
+                {
+                    Id = "2c5e174e-3b0e-446f-86af-483d56fd7214",
+                    Name = "Therapyst",
+                    NormalizedName = "THERAPYST".ToUpper()
+                },
+                new IdentityRole
+                {
+                    Id = "2c5e174e-3b0e-446f-86af-563d56fd7217",
+                    Name = "User",
+                    NormalizedName = "USER".ToUpper()
+                });
+
+            builder.Entity<IdentityUserRole<string>>()
+                .HasData(new IdentityUserRole<string>()
+                {
+                    RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                    UserId = "2c5e174e-3b0e-446f-86af-483d56fd7211"
+                },
+                new IdentityUserRole<string>()
+                {
+                    RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7214",
+                    UserId = "2c5e174e-3y0e-446f-86af-483d56fc7211"
+                },
+                    new IdentityUserRole<string>()
+                    {
+                        RoleId = "2c5e174e-3b0e-446f-86af-563d56fd7217",
+                        UserId = "2c5e174e-3b0e-446f-86af-483d56fc7211"
+                    });
         }
 
 
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+   
+
+
+public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             OnBeforeSaving();
             return base.SaveChangesAsync(cancellationToken);

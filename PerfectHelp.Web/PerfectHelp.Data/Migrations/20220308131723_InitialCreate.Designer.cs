@@ -12,7 +12,7 @@ using PerfectHelp.Data;
 namespace PerfectHelp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220308081629_InitialCreate")]
+    [Migration("20220308131723_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,29 @@ namespace PerfectHelp.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                            ConcurrencyStamp = "2277708b-446d-4d8f-8295-05adba119c7a",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7214",
+                            ConcurrencyStamp = "dbe2d7d0-7a1e-4c0d-9035-966d1dc70532",
+                            Name = "Therapyst",
+                            NormalizedName = "THERAPYST"
+                        },
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-563d56fd7217",
+                            ConcurrencyStamp = "ef9c86a8-f06e-4e7f-b69c-cc72a5287744",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -144,6 +167,56 @@ namespace PerfectHelp.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7211",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d96471f7-0097-4f7a-b0ab-2c18c9953336",
+                            Email = "yokogrup@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "YOKOGRUP@GMAIL.COM",
+                            NormalizedUserName = "YOKOGRUP@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBBG78mq9WTOPFiqzHPQmX5e1oJtozyguEKnT/af0QW2+C4OLRgOsbGqgBZlik1Ncw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2975700b-4bed-4beb-8d7d-cbd2e39f98e3",
+                            TwoFactorEnabled = false,
+                            UserName = "yokogrup@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "2c5e174e-3y0e-446f-86af-483d56fc7211",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7525ea4f-e4dd-4b27-a273-f5acd7d5583c",
+                            Email = "therapyst@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "THERAPYST@GMAIL.COM",
+                            NormalizedUserName = "THERAPYST@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL1+7nCHTZfC+sgFmMVLTTsooazBj4aQBhTil7k2ImB5/GCOM9bP5wwzaY4maqJNMQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "840cf473-c820-4a8f-bf6d-45c45af1b184",
+                            TwoFactorEnabled = false,
+                            UserName = "therapyst@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fc7211",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5929058c-f2ae-4b69-b6b8-39f0bf357ff1",
+                            Email = "user@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "USER@GMAIL.COM",
+                            NormalizedUserName = "USER@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFRB864vA99nr5lkd05x5wkp3Ti3Eqm48yHK7saINI6dYhnunvtV1T0Xs4qZw4sMJQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d43da728-58fd-4578-91dc-fb48b239fced",
+                            TwoFactorEnabled = false,
+                            UserName = "user@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -208,6 +281,23 @@ namespace PerfectHelp.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "2c5e174e-3b0e-446f-86af-483d56fd7211",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                        },
+                        new
+                        {
+                            UserId = "2c5e174e-3y0e-446f-86af-483d56fc7211",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7214"
+                        },
+                        new
+                        {
+                            UserId = "2c5e174e-3b0e-446f-86af-483d56fc7211",
+                            RoleId = "2c5e174e-3b0e-446f-86af-563d56fd7217"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

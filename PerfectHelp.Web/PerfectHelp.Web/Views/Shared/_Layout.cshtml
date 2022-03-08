@@ -60,13 +60,18 @@
                         <a class="nav-link" href="#">Projects</a>
                     </li>    
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">Projects</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="MySpace" asp-action="Index">My Space</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" asp-controller="MySpace" asp-action="Index">Therapyst</a>
+                    </li>
                     <!-- Navbar dropdown -->
-        <li class="nav-item dropdown">
+                    @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -75,7 +80,7 @@
             data-mdb-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown
+            Administration
           </a>
           <!-- Dropdown menu -->
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -85,19 +90,16 @@
             <li>
               <a class="dropdown-item" href="#">Messages</a>
             </li>
-            @if(User.IsInRole("therapyst")){
+            @if(User.IsInRole("admin")){
             <li>
               <a class="dropdown-item" href="#">My Cources</a>
             </li>
             }
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    <li>
-              <a class="dropdown-item" href="#">only for authenticated</a>
-            </li>
-                                }
+                                
           </ul>
         </li>
+                        }
+                        
                 </ul>
                 <!-- Left links -->
             </div>
@@ -111,8 +113,15 @@
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
+@*        @if (User.IsInRole("Admin"))
+        {
+            <p>usera e admin</p>
+            
+            <div class="d-flex align-items-center">               
+                <partial name="_AdminLayout" />
+            </div>
+        }*@
 
-    
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
