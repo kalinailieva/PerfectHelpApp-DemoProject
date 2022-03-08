@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PerfectHelp.Data.Entity;
 using PerfectHelp.Web.Models;
 using System.Diagnostics;
 

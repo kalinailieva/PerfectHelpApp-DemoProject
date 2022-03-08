@@ -2,19 +2,30 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using PerfectHelp.Data;
+using PerfectHelp.Data.Infrastructure;
 using PerfectHelp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 IConfiguration configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .Build();
 
 
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//dataseeder
+
+builder.Services.AddTransient<DataSeeder>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+
+
+
+
+
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => {
@@ -31,6 +42,21 @@ builder.Services.Configure<AuthMessageSenderOptions>(configuration);
 
 
 var app = builder.Build();
+
+
+
+
+SeedData(app);
+
+void SeedData(IHost app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<DataSeeder>();
+        service.Seed();
+    }
+}
 
 if (app.Environment.IsDevelopment())
 {
@@ -50,9 +76,14 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "Area",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapDefaultControllerRoute();
+}   
+);
 app.MapRazorPages();
 
 app.Run();
