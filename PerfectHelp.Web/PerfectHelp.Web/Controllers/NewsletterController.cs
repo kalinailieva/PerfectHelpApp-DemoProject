@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PerfectData.Services.Interfaces;
 using PerfectHelp.Data.Entity;
 
 namespace PerfectHelp.Web.Controllers
 {
     public class NewsletterController : Controller
     {
+        private readonly INewsletterService newsletterService;
+
+        public NewsletterController(INewsletterService newsletterService)
+        {
+            this.newsletterService = newsletterService;
+        }
         public IActionResult Index()
         {
             var news = new Newsletter();
@@ -12,10 +19,11 @@ namespace PerfectHelp.Web.Controllers
 
             return View();
         }
-        public IActionResult GetSubscribed(string userId)
+        public IActionResult GetSubscribed(string name, string email)
         {
-
-            return Ok();
+            newsletterService.GetSubscribed(name, email);  
+           
+            return Ok(email);
         }
     }
 }

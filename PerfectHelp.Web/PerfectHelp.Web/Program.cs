@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using PerfectData.Services.Interfaces;
+using PerfectData.Services.Repository;
+using PerfectData.Services.Services;
 using PerfectHelp.Data;
-using PerfectHelp.Data.Infrastructure;
+using PerfectHelp.Data.Services;
 using PerfectHelp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +33,9 @@ builder.Services.AddControllersWithViews();
 //configuration removed due to security reasons of sendgrid email provider
 //builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(configuration);
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<INewsletterService, NewsletterService>();
 
 
 var app = builder.Build();

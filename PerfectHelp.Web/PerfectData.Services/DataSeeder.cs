@@ -1,26 +1,44 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PerfectData.Services.Repository;
+using PerfectHelp.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerfectHelp.Data.Infrastructure
+namespace PerfectHelp.Data.Services
 {
     public class DataSeeder
     {
         private readonly ApplicationDbContext dbContext;
-        private readonly IServiceProvider serviceProvider;
+        private readonly IGenericRepository<Subscribers> subscribersRepo;
+
         public DataSeeder(ApplicationDbContext dbContext, IServiceProvider services)
         {
             this.dbContext = dbContext;
-            this.serviceProvider = services;
+            
         }
 
         public void Seed()
         {
+            var test = dbContext.Subscribers.FirstOrDefault(x => x.Name == "Newsletter");
+            if (dbContext.Subscribers.FirstOrDefault(x => x.Name == "Newsletter") == null)
+            {
+                var newsLetterSubscription = new Subscribers()
+                {
+                    Name = "Newsletter"
+                };
+                //subscribersRepo.Insert(newsLetterSubscription);
+                //subscribersRepo.Save();
+            }
+
+
+
+
+
            // if (!dbContext.Roles.Any())
            // {
            //     string[] roles = new string[] { "Admin", "Therapyst", "Client" };

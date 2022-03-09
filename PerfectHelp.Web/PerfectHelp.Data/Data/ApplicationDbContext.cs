@@ -23,15 +23,21 @@ namespace PerfectHelp.Data
         }
 
         public DbSet<Newsletter> Newsletters { get; set; }
+        public DbSet<Subscribers> Subscribers { get; set; }
+
+        public DbSet<NotRegisteredEmails> NotRegisteredEmails { get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
             builder.Entity<Newsletter>()
-                .HasMany(x => x.SubscribedUsers)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasKey(x => x.Id);
+
+            builder.Entity<NotRegisteredEmails>()
+                .HasKey(x => x.Id);
+
+
 
             //seedData
 
@@ -81,7 +87,7 @@ namespace PerfectHelp.Data
                 },
                 new IdentityRole
                 {
-                    Id = "2c5e174e-3b0e-446f-86af-563d56fd7217",
+                    Id = "2c5e174e-3b0e-446f-86af-3d56fd7217",
                     Name = "User",
                     NormalizedName = "USER".ToUpper()
                 });
@@ -99,7 +105,7 @@ namespace PerfectHelp.Data
                 },
                     new IdentityUserRole<string>()
                     {
-                        RoleId = "2c5e174e-3b0e-446f-86af-563d56fd7217",
+                        RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210",
                         UserId = "2c5e174e-3b0e-446f-86af-483d56fc7211"
                     });
         }

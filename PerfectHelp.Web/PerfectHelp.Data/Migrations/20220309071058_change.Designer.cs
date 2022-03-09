@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PerfectHelp.Data;
 
@@ -11,9 +12,10 @@ using PerfectHelp.Data;
 namespace PerfectHelp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220309071058_change")]
+    partial class change
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,21 +54,21 @@ namespace PerfectHelp.Data.Migrations
                         new
                         {
                             Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
-                            ConcurrencyStamp = "b2448722-0d12-4799-be60-e25bf12fa4bd",
+                            ConcurrencyStamp = "b18942e5-d785-484d-b259-a066b7fed71f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2c5e174e-3b0e-446f-86af-483d56fd7214",
-                            ConcurrencyStamp = "0effb6a9-e19d-4c2e-b8fc-b702fe1238a8",
+                            ConcurrencyStamp = "e5c80fb3-6555-48d2-a94d-c63b9ebfd469",
                             Name = "Therapyst",
                             NormalizedName = "THERAPYST"
                         },
                         new
                         {
                             Id = "2c5e174e-3b0e-446f-86af-3d56fd7217",
-                            ConcurrencyStamp = "aa54fb01-0ce5-4cf8-83d1-509c7e8a180b",
+                            ConcurrencyStamp = "65634bc7-d64f-4a44-ad84-4715ff72b3e2",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -171,15 +173,15 @@ namespace PerfectHelp.Data.Migrations
                         {
                             Id = "2c5e174e-3b0e-446f-86af-483d56fd7211",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "93724490-3e01-4900-b521-a1f2b7909007",
+                            ConcurrencyStamp = "1a7e5bc9-18e0-4836-921c-165cbc9309da",
                             Email = "yokogrup@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "YOKOGRUP@GMAIL.COM",
                             NormalizedUserName = "YOKOGRUP@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOxOIMyXpUyJk1THJkHLHcfyenymIItOXwSFoZWZaZmaQb4U+Cys6NsCtYind45XLw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDw8z7V/fH7QjoRgQaLIbXgqxyjTflx5uhmzF4yCeeai0bzgibDUUDOUHcQ2AmiGAg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0edb313c-21c3-49fe-8163-5ad05862f2a8",
+                            SecurityStamp = "32645430-e6b2-470c-9877-e5f8c3438323",
                             TwoFactorEnabled = false,
                             UserName = "yokogrup@gmail.com"
                         },
@@ -187,15 +189,15 @@ namespace PerfectHelp.Data.Migrations
                         {
                             Id = "2c5e174e-3y0e-446f-86af-483d56fc7211",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "11046878-4e70-47cf-a567-572f9ecec073",
+                            ConcurrencyStamp = "9a2b43fd-a55d-4443-99a9-c535d4f9c42a",
                             Email = "therapyst@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "THERAPYST@GMAIL.COM",
                             NormalizedUserName = "THERAPYST@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHBcJu0Zu1ieLYmhRXWo/FWpT/fCAJFgan2VMqwHD2DTB/oe9phm1HvBP4/obw0dvQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPzNWvP0muZCQS0Fh3BqC0y5XL43BwUs2nY3neHD2FS5JD+tJ+JAttMFVGeK6lNLXw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5da11fb4-8466-4610-a6d4-768ec002be45",
+                            SecurityStamp = "5ec77c5b-72fa-48fd-a9b3-868e6ecf28c8",
                             TwoFactorEnabled = false,
                             UserName = "therapyst@gmail.com"
                         },
@@ -203,15 +205,15 @@ namespace PerfectHelp.Data.Migrations
                         {
                             Id = "2c5e174e-3b0e-446f-86af-483d56fc7211",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52b6e023-1b29-4055-95e4-4f93e13918c6",
+                            ConcurrencyStamp = "6193d50e-96db-4c32-b824-569e84e423b8",
                             Email = "user@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "USER@GMAIL.COM",
                             NormalizedUserName = "USER@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECMxgeRgzhgnUGzccnxSLov67oWbcNlPhHQsdK9lIrHWHY3c70pKLqmqB0nJudacLQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ6hNntqNxqCCK50hQTgOSjKq46iLZTuOBejzoZ6HKoE0KEqnu98KXKLfzBERH7FKA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "044b2b22-e226-49c2-937f-9e70dbdd592b",
+                            SecurityStamp = "665540c4-bcd7-4965-a16b-d092a7d6da0d",
                             TwoFactorEnabled = false,
                             UserName = "user@gmail.com"
                         });
@@ -348,21 +350,6 @@ namespace PerfectHelp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Newsletters");
-                });
-
-            modelBuilder.Entity("PerfectHelp.Data.Entity.NotRegisteredEmails", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NotRegisteredEmails");
                 });
 
             modelBuilder.Entity("PerfectHelp.Data.Entity.Subscribers", b =>

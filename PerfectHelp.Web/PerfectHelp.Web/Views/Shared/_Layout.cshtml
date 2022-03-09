@@ -85,7 +85,7 @@
           <!-- Dropdown menu -->
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <a class="dropdown-item" href="#">Newsletters</a>
+              <a class="dropdown-item" asp-controller="Newsletter" asp-action="Index">Newsletters</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Messages</a>
@@ -132,7 +132,8 @@
     </div>
     <footer class="bg-light text-center text-lg-start container">
   <!-- Grid container -->
-  <div class="container p-4 pb-0">
+  <div id="subscribe" class="container p-4 pb-0">
+        <div id="subscribe-alert" ></div>
     <form action="">
       <!--Grid row-->
       <div class="row">
@@ -145,11 +146,15 @@
         <!--Grid column-->
 
         <!--Grid column-->
+       
         <div class="col-md-5 col-12 mb-4 mb-md-0">
+            <!--Alert-->
+
+           
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <input type="email" id="form5Example25" class="form-control" />
-            <label class="form-label" for="form5Example25">Email address</label>
+            <input type="email" id="newsletter-subscribe" class="form-control" />
+            <label class="form-label" for="newsletter-subscribe">Email address</label>
           </div>
         </div>
         <!--Grid column-->
@@ -165,7 +170,9 @@
       </div>
       <!--Grid row-->
     </form>
+
   </div>
+
   <!-- Grid container -->
 
   <!-- Copyright -->
